@@ -1,0 +1,87 @@
+.container {
+  padding: 0;
+}
+
+.wrapper {
+  text-align: center;
+  display: flex;
+}
+
+.image {
+  margin-right: 30px;
+  margin-bottom: 0;
+
+  max-width: 320px;
+  height: 400px;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.description {
+  text-align: left;
+}
+
+.movieTitle {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.16;
+  letter-spacing: 0.03em;
+  text-align: left;
+}
+
+.info {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #515a5a;
+}
+
+.title {
+  margin-top: 0;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #161515;
+}
+
+.genre {
+  composes: info;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.genre li:not(:last-child)::after {
+  content: ',';
+  margin-right: 5px;
+}
+
+.submenu {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 0;
+  padding: 30px 0;
+}
+
+.submenuItem {
+  margin-right: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #161515;
+}
+
+.activeSubmenuItem {
+  composes: submenuItem;
+  color: #5f5ff6;
+}
+
+.btn {
+  padding: 5px 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: none;
+  font-size: 16px;
+  border-radius: 2px;
+}

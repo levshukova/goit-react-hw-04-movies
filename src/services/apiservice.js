@@ -12,7 +12,7 @@ axios.defaults.params = {
 async function getPopularMovies() {
   try {
     const config = {
-      url: `${BASE_URL}trending/movie/day`,
+      url: `trending/movie/day`,
     };
 
     const { data } = await axios(config);
@@ -26,7 +26,7 @@ async function getPopularMovies() {
 async function getMoviesByKeyWord(query) {
   try {
     const config = {
-      url: `${BASE_URL}search/movie/`,
+      url: `search/movie`,
       params: {
         query,
       },
@@ -43,7 +43,7 @@ async function getMoviesByKeyWord(query) {
 async function getMovieById(id) {
   try {
     const config = {
-      url: `${BASE_URL}movie/${id}`,
+      url: `movie/${id}`,
     };
 
     const { data } = await axios(config, id);
@@ -57,7 +57,7 @@ async function getMovieById(id) {
 async function getCastInfo(id) {
   try {
     const config = {
-      url: `${BASE_URL}movie/${id}/credits`,
+      url: `movie/${id}/credits`,
     };
 
     const { data } = await axios(config, id);
@@ -71,7 +71,7 @@ async function getCastInfo(id) {
 async function getMovieReviews(id) {
   try {
     const config = {
-      url: `${BASE_URL}movie/${id}/reviews`,
+      url: `movie/${id}/reviews`,
     };
 
     const { data } = await axios(config, id);

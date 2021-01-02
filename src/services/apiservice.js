@@ -14,9 +14,9 @@ async function getPopularMovies() {
     const config = {
       url: `trending/movie/day`,
     };
-
     const { data } = await axios(config);
-    return data;
+
+    return data.results;
   } catch (error) {
     console.log('error', { error });
     return null;
@@ -31,9 +31,9 @@ async function getMoviesByKeyWord(query) {
         query,
       },
     };
-
     const { data } = await axios(config, query);
-    return data;
+
+    return data.results;
   } catch (error) {
     console.log('error', { error });
     return null;
@@ -45,8 +45,8 @@ async function getMovieById(id) {
     const config = {
       url: `movie/${id}`,
     };
-
     const { data } = await axios(config, id);
+
     return data;
   } catch (error) {
     console.log('error', { error });
@@ -59,9 +59,9 @@ async function getCastInfo(id) {
     const config = {
       url: `movie/${id}/credits`,
     };
-
     const { data } = await axios(config, id);
-    return data;
+
+    return data.cast;
   } catch (error) {
     console.log('error', { error });
     return null;
@@ -73,9 +73,9 @@ async function getMovieReviews(id) {
     const config = {
       url: `movie/${id}/reviews`,
     };
-
     const { data } = await axios(config, id);
-    return data;
+
+    return data.results;
   } catch (error) {
     console.log('error', { error });
     return null;

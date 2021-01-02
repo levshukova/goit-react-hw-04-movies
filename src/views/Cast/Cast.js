@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import apiservice from '../../services/apiservice';
 
+import apiservice from '../../services/apiservice';
 import ErrorView from '../NotFoundView';
 import Loader from '../../components/Loader';
-
 import noImageFound from '../../images/not_found.gif';
-import s from './Cast.module.css';
 import Status from '../../services/status';
+import baseImageURL from '../../services/baseImageURL';
+import s from './Cast.module.css';
 
 export default function Cast() {
   const { movieId } = useParams();
@@ -18,7 +18,7 @@ export default function Cast() {
   useEffect(() => {
     apiservice
       .getCastInfo(movieId)
-      .then(({ cast }) => {
+      .then(cast => {
         setActors(cast);
         setStatus(Status.RESOLVED);
       })
@@ -42,7 +42,7 @@ export default function Cast() {
               <img
                 src={
                   actor.profile_path
-                    ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                    ? `${baseImageURL}${actor.profile_path}`
                     : noImageFound
                 }
                 alt={actor.original_name}

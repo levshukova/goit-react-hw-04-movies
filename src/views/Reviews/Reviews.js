@@ -13,7 +13,7 @@ export default function Reviews() {
   useEffect(() => {
     apiservice
       .getMovieReviews(movieId)
-      .then(({ results }) => {
+      .then(results => {
         if (results.length === 0) {
           throw new Error("Sorry. We don't have any reviews on this movie yet");
         }

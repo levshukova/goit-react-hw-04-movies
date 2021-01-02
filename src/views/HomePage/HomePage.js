@@ -17,7 +17,7 @@ function HomePage() {
     setStatus(Status.PENDING);
     apiservice
       .getPopularMovies()
-      .then(({ results }) => {
+      .then(results => {
         setMovies(results);
         setStatus(Status.RESOLVED);
       })

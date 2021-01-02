@@ -45,7 +45,7 @@ export default function MoviesPage() {
 
     apiservice
       .getMoviesByKeyWord(query)
-      .then(({ results }) => {
+      .then(results => {
         if (results.length === 0) {
           toast.error(`No movies found on ${query}.`);
           setStatus(Status.REJECTED);

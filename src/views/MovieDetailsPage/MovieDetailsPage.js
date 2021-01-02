@@ -10,6 +10,7 @@ import {
 
 import apiservice from '../../services/apiservice';
 import Status from '../../services/status';
+import baseImageURL from '../../services/baseImageURL';
 import ErrorView from '../NotFoundView';
 import Loader from '../../components/Loader';
 import noImageFound from '../../images/not_found.gif';
@@ -36,7 +37,7 @@ export default function MovieDetailsPage() {
       .then(({ poster_path, original_title, popularity, overview, genres }) => {
         setMovie({
           src: poster_path
-            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+            ? `${baseImageURL}${poster_path}`
             : `${noImageFound}`,
           title: original_title,
           score: popularity.toFixed(1),

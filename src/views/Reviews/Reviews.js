@@ -8,12 +8,22 @@ export default function Reviews() {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    apiservice.getMovieReviews(movieId).then(({ results }) => {
-      setReviews(results);
-      setStatus(Status.RESOLVED);
-    });
+    apiservice
+      .getMovieReviews(movieId)
+      .then(({ results }) => {
+        if (results.length === 0) {
+          throw new Error("Sorry. We don't have any reviews on this movie yet");
+        }
+        setReviews(results);
+        setStatus(Status.RESOLVED);
+      })
+      .catch(error => {
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
   }, [movieId]);
 
   return (
@@ -28,6 +38,8 @@ export default function Reviews() {
           ))}
         </ul>
       )}
+
+      {status === Status.REJECTED && <p>{error.message}</p>}
     </>
   );
 }
